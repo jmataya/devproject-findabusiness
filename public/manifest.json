@@ -1,0 +1,8 @@
+{
+  "short_name": "Find a Business",
+  "name": "Waymark Dev Project: Find a Business",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

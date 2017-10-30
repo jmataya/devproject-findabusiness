@@ -1,0 +1,22 @@
+{
+  "name": "devproject-findabusiness",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "1.0.14"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "main": "src/index.js",
+  "repository": "https://github.com/jmataya/devproject-findabusiness",
+  "author": "Jeff Mataya <jeff.mataya@gmail.com>",
+  "license": "MIT"
+}

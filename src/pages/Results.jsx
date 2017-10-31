@@ -5,6 +5,8 @@ import SearchBox from '../components/presentation/SearchBox';
 import Header from '../components/presentation/Header';
 import SearchResults from '../components/presentation/SearchResults';
 
+import GooglePlaces from '../components/container/GooglePlaces';
+
 type Props = {
   match: {
     params: {
@@ -12,62 +14,6 @@ type Props = {
     }
   }
 }
-
-const fakeData = [{
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 1,
-  rating: 4.5,
-}, {
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 4,
-  rating: 4.0,
-}, {
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 3,
-  rating: 4.2,
-}, {
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 3,
-  rating: 3.5,
-}, {
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 2,
-  rating: 2.5,
-}, {
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 1,
-  rating: 3.0,
-}, {
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 2,
-  rating: 2.7,
-}, {
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 3,
-  rating: 2.5,
-}, {
-  name: 'Pizza Palace',
-  image: 'https://baconmockup.com/300/300/',
-  categories: ['pizza', 'restaurant'],
-  price_level: 4,
-  rating: 1.5,
-}]
 
 export default class Results extends Component {
   props: Props;
@@ -81,7 +27,9 @@ export default class Results extends Component {
           <SearchBox defaultValue={searchTerm} />
         </Header>
         <Grid>
-          <SearchResults results={fakeData} searchTerm={searchTerm} />
+          <GooglePlaces searchTerm={searchTerm}>
+            <SearchResults />
+          </GooglePlaces>
         </Grid>
       </div>
     );

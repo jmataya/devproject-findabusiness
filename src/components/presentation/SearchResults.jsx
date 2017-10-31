@@ -6,16 +6,10 @@ import Column from './layout/Column';
 import Row from './layout/Row';
 import SmallHeader from './typography/SmallHeader';
 
-type Result = {
-  name: String,
-  image: String,
-  categories: Array<String>,
-  rating: number,
-  price_level: number,
-};
+import type { PlaceResult } from '../container/GooglePlaces';
 
 type Props = {
-  results: Array<Result>,
+  results: Array<PlaceResult>,
   searchTerm: String,
 };
 
@@ -58,15 +52,21 @@ export default class SearchResults extends Component {
     return `${results.length} results found for search "${searchTerm}:"`;
   }
 
+  getImage(result: PlaceResult) {
+    const { photos } = result;
+    if (photos && photos.length > 0) {
+      const url = photos[0].getUrl({maxWidth: 65, maxHeight: 65});
+      return <img src={url} alt={result.name} />;
+    }
+  }
+
   render() {
     const { results } = this.props;
     const resultList = results.map(res => {
       return (
-        <Column width={4}>
+        <Column width={6}>
           <a href="#" className="entry">
-            <div className="image">
-              <img src={res.image} alt="logo" />
-            </div>
+            <div className="image">{this.getImage(res)}</div>
             <div className="details">
               <div className="name">{res.name}</div>
               <div className="info">
@@ -74,7 +74,7 @@ export default class SearchResults extends Component {
                 <div className="price">&nbsp;- {formatPriceLevel(res.price_level)}</div>
               </div>
               <div className="about">
-                <div className="category">{formatCategories(res.categories)}</div>
+                <div className="category">{formatCategories(res.types)}</div>
               </div>
             </div>
           </a>

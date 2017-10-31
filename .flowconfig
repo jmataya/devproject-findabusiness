@@ -1,10 +1,15 @@
 [ignore]
-.*/node_modules/*
+.*/node_modules/ast-types-flow/*
+.*/node_modules/promise/*
+.*/node_modules/eslint-plugin-jsx-a11y/*
 
 [include]
 
 [libs]
+./src/interfaces/global.js
 
 [options]
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable
+module.name_mapper='.*\(.css\)' -> 'CSSModule'
+module.system=haste

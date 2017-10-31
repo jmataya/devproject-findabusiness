@@ -23,8 +23,8 @@ type PlacesService = {
 };
 
 type Props = {
-  children?: String | Element<*> | Array<Element<*>>,
-  searchTerm: String,
+  children?: string | Element<*> | Array<Element<*>>,
+  searchTerm: string,
 };
 
 type State = {

@@ -17,7 +17,7 @@ export default class SearchBox extends Component {
 
   static defaultProps = {
     defaultValue: "",
-    onSubmit: () => {},
+    onSubmit: (s: string) => {},
   };
 
   handleChange(e: Event) {
@@ -26,7 +26,7 @@ export default class SearchBox extends Component {
     }
   }
 
-  handleKeyPress(e: Event) {
+  handleKeyPress(e: KeyboardEvent) {
     if (e.key === 'Enter') {
       this.props.onSubmit(this.state.value);
     }

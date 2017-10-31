@@ -3,7 +3,7 @@ import React, { Component, Element } from 'react';
 import './SmallHeader.css';
 
 export default class SmallHeader extends Component {
-  props: { children?: String | Element<*> | Array<Element<*>> };
+  props: { children?: string | Element<*> | Array<Element<*>> };
 
   render() {
     return (

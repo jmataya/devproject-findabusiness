@@ -19,7 +19,6 @@ class Home extends Component {
   props: Props;
 
   onSearch = (searchTerm: string) => {
-    console.log('Search term:' + searchTerm);
     this.props.history.push(`/results/${searchTerm}`);
   };
 

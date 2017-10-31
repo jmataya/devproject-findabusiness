@@ -10,10 +10,10 @@ import type { PlaceResult } from '../container/GooglePlaces';
 
 type Props = {
   results: Array<PlaceResult>,
-  searchTerm: String,
+  searchTerm: string,
 };
 
-const formatPriceLevel = (level: number): String => {
+const formatPriceLevel = (level: number): string => {
   let price = '';
   for (let i = 0; i < level; i++) {
     price += '$';
@@ -21,7 +21,7 @@ const formatPriceLevel = (level: number): String => {
   return price;
 };
 
-const formatRating = (rating: number): String => {
+const formatRating = (rating: number): string => {
   const solidStars = Math.round(rating);
   const emptyStars = 5 - solidStars;
 
@@ -36,7 +36,7 @@ const formatRating = (rating: number): String => {
   return ratingSymbol;
 }
 
-const formatCategories = (categories: Array<String>): String => {
+const formatCategories = (categories: Array<string>): string => {
   if (categories.length > 0) {
     return categories[0].charAt(0).toUpperCase() + categories[0].slice(1);
   }
@@ -47,7 +47,7 @@ const formatCategories = (categories: Array<String>): String => {
 export default class SearchResults extends Component {
   props: Props;
 
-  get resultsMessage(): String {
+  resultsMessage() {
     const { results, searchTerm } = this.props
     return `${results.length} results found for search "${searchTerm}:"`;
   }
@@ -87,7 +87,7 @@ export default class SearchResults extends Component {
         <Row>
           <Column width={12}>
             <SmallHeader>
-              {this.resultsMessage}
+              {this.resultsMessage()}
             </SmallHeader>
           </Column>
         </Row>

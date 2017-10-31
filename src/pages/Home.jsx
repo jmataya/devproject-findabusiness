@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './Home.css';
 
 import Column from '../components/presentation/layout/Column';
@@ -8,7 +9,20 @@ import Row from '../components/presentation/layout/Row';
 import SearchBox from '../components/presentation/SearchBox';
 import Title from '../components/presentation/typography/Title';
 
-export default class Home extends Component {
+type Props = {
+  history: {
+    push: Function,
+  },
+};
+
+class Home extends Component {
+  props: Props;
+
+  onSearch = (searchTerm: string) => {
+    console.log('Search term:' + searchTerm);
+    this.props.history.push(`/results/${searchTerm}`);
+  };
+
   render() {
     return (
       <div className="home">
@@ -20,7 +34,7 @@ export default class Home extends Component {
           </Row>
           <Row>
             <Column offset={3} width={6}>
-              <SearchBox />
+              <SearchBox onSubmit={this.onSearch} />
             </Column>
           </Row>
         </Grid>
@@ -28,3 +42,5 @@ export default class Home extends Component {
     );
   }
 }
+
+export default withRouter(Home);

@@ -4,6 +4,7 @@ import './SearchBox.css';
 
 type Props = {
   defaultValue: string,
+  onSubmit: Function,
 };
 
 type State = {
@@ -16,11 +17,18 @@ export default class SearchBox extends Component {
 
   static defaultProps = {
     defaultValue: "",
+    onSubmit: () => {},
   };
 
   handleChange(e: Event) {
     if (e.target instanceof HTMLInputElement) {
       this.setState({ value: e.target.value });
+    }
+  }
+
+  handleKeyPress(e: Event) {
+    if (e.key === 'Enter') {
+      this.props.onSubmit(this.state.value);
     }
   }
 
@@ -31,6 +39,7 @@ export default class SearchBox extends Component {
                type="text"
                placeholder="Search for a place or address"
                onChange={this.handleChange.bind(this)}
+               onKeyPress={this.handleKeyPress.bind(this)}
                value={this.state.value}
         />
       </div>

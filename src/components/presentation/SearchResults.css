@@ -1,0 +1,43 @@
+.entry {
+  border-bottom: 0.5px solid #D6D6D6;
+  display: flex;
+  margin: 0 10px;
+  padding: 15px 5px;
+  text-decoration: none;
+}
+
+.entry:hover {
+  background: #D6D6D6;
+}
+
+.entry .image {
+  height: 65px;
+  width: 65px;
+}
+
+.entry .image img {
+  width: 100%;
+  height: auto;
+}
+
+.entry .name {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.entry .details {
+  color: #8e8e93;
+  font-size: 14px;
+  line-height: 1.5;
+  padding-left: 20px;
+}
+
+.details .info .rating {
+  color: #FF9500;
+}
+
+.details .info {
+  display: flex;
+}

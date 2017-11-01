@@ -6,7 +6,7 @@ import './Home.css';
 import Column from '../components/presentation/layout/Column';
 import Grid from '../components/presentation/layout/Grid';
 import Row from '../components/presentation/layout/Row';
-import SearchBox from '../components/presentation/SearchBox';
+import SearchBox from '../components/presentation/general/SearchBox';
 import Title from '../components/presentation/typography/Title';
 
 type Props = {

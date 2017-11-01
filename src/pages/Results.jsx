@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Grid from '../components/presentation/layout/Grid';
-import Header from '../components/presentation/Header';
-import SearchResults from '../components/presentation/SearchResults';
+import Header from '../components/presentation/general/Header';
+import SearchResults from '../components/presentation//general/SearchResults';
 import SmallHeader from '../components/presentation/typography/SmallHeader';
 
 import GooglePlaces from '../components/container/GooglePlaces';

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Column from './layout/Column';
-import Row from './layout/Row';
+import Column from '../layout/Column';
+import Row from '../layout/Row';
 
 import './Header.css';
 

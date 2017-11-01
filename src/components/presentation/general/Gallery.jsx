@@ -1,8 +1,8 @@
 // @flow
 
 import React, { Component } from 'react';
-import Caption from './typography/Caption';
-import Clarifai from '../container/Clarifai';
+import Caption from '../typography/Caption';
+import Clarifai from '../../container/Clarifai';
 import './Gallery.css';
 
 type ImageDetails = {

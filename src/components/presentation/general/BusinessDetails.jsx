@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import Address from './Address';
-import Column from './layout/Column';
+import Column from '../layout/Column';
 import Detail from './Detail';
 import Gallery from './Gallery';
-import Row from './layout/Row';
+import Row from '../layout/Row';
 
 type Props = {
   place?: FullPlaceResult,

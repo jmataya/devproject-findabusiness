@@ -1,6 +1,6 @@
 // @flow
 import React, { Component, Element } from 'react';
-import SectionTitle from './typography/SectionTitle';
+import SectionTitle from '../typography/SectionTitle';
 import './Detail.css';
 
 type Props = {

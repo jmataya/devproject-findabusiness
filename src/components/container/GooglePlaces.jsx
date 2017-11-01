@@ -1,27 +1,6 @@
 // @flow
 import React, { Component, Element } from 'react';
 
-type PhotoResult = {
-  getUrl: Function,
-  height: number,
-  width: number,
-  html_attributes: Array<string>,
-};
-
-export type PlaceResult = {
-  id: string,
-  name: string,
-  formatted_address: string,
-  photos: Array<PhotoResult>,
-  price_level: number,
-  rating: number,
-  types: Array<string>,
-};
-
-type PlacesService = {
-  textSearch: Function,
-};
-
 type Props = {
   children?: string | Element<*> | Array<Element<*>>,
   searchTerm: string,
@@ -34,7 +13,7 @@ type State = {
 export default class GooglePlaces extends Component {
   props: Props;
   state: State = { results: [] };
-  service: PlacesService;
+  service: { textSearch: Function };
 
   componentDidMount() {
     if (window) {

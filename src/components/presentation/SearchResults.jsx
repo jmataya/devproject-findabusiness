@@ -1,12 +1,12 @@
 // @flow
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './SearchResults.css';
 
 import Column from './layout/Column';
 import Row from './layout/Row';
+import SectionTitle from './typography/SectionTitle';
 import SmallHeader from './typography/SmallHeader';
-
-import type { PlaceResult } from '../container/GooglePlaces';
 
 type Props = {
   results: Array<PlaceResult>,
@@ -65,10 +65,17 @@ export default class SearchResults extends Component {
     const resultList = results.map(res => {
       return (
         <Column width={6}>
-          <a href="#" className="entry">
+          <Link className="entry"
+                to={{
+                  pathname: `/details/${res.id}`,
+                  params: { place: res },
+                }}
+          >
             <div className="image">{this.getImage(res)}</div>
             <div className="details">
-              <div className="name">{res.name}</div>
+              <div className="name">
+                <SectionTitle>{res.name}</SectionTitle>
+              </div>
               <div className="info">
                 <div className="rating">{formatRating(res.rating)}</div>
                 <div className="price">&nbsp;- {formatPriceLevel(res.price_level)}</div>
@@ -77,7 +84,7 @@ export default class SearchResults extends Component {
                 <div className="category">{formatCategories(res.types)}</div>
               </div>
             </div>
-          </a>
+          </Link>
         </Column>
       );
     });

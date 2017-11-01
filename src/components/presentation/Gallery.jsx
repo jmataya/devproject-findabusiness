@@ -8,7 +8,6 @@ import './Gallery.css';
 type ImageDetails = {
   url: string,
   alt: string,
-  caption: Array<string>,
 };
 
 type Props = {
@@ -24,7 +23,7 @@ export default class Gallery extends Component {
   state: State = { selected: 0 };
 
   renderImage(imageDetails: ImageDetails) {
-    const { alt, url, caption } = imageDetails;
+    const { alt, url } = imageDetails;
     return (
       <div className="image-container">
         <div className="image"><img key={url} src={url} alt={alt} /></div>

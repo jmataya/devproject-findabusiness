@@ -38,7 +38,7 @@ export default class BusinessDetails extends Component {
     return (
       <Row>
         <Column width={6}>
-          <Gallery images={imageDetails} />
+          {imageDetails.length > 0 && <Gallery images={imageDetails} />}
         </Column>
         <Column width={6}>
           <div className="details">
@@ -51,9 +51,11 @@ export default class BusinessDetails extends Component {
             {place.email && (
               <Detail title="Email">{place.email}</Detail>
             )}
-            <Detail title="Address">
-              <Address components={place.address_components} />
-            </Detail>
+            {place.address_components && (
+              <Detail title="Address">
+                <Address components={place.address_components} />
+              </Detail>
+            )}
             <Detail title="Categories">
               {formatCategories(place.types)}
             </Detail>

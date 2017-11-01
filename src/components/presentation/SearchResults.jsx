@@ -57,6 +57,8 @@ export default class SearchResults extends Component {
     if (photos && photos.length > 0) {
       const url = photos[0].getUrl({maxWidth: 65, maxHeight: 65});
       return <img src={url} alt={result.name} />;
+    } else {
+      return <div className="placeholder"></div>;
     }
   }
 
@@ -80,8 +82,19 @@ export default class SearchResults extends Component {
                 <SectionTitle>{res.name}</SectionTitle>
               </div>
               <div className="info">
-                <div className="rating">{formatRating(res.rating)}</div>
-                <div className="price">&nbsp;- {formatPriceLevel(res.price_level)}</div>
+                {res.rating && (
+                  <div className="rating">
+                    {formatRating(res.rating)}
+                  </div>
+                )}
+                {(res.rating && res.price_level) && (
+                  <div> - </div>
+                )}
+                {res.price_level && (
+                  <div className="price">
+                    {formatPriceLevel(res.price_level)}
+                  </div>
+                )}
               </div>
               <div className="about">
                 <div className="category">{formatCategories(res.types)}</div>

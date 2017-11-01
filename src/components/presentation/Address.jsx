@@ -33,7 +33,11 @@ export default class Address extends Component {
       postal_code: postal,
     } = this.processComponents(this.props.components);
 
-    const lineOne = `${streetNumber.long_name} ${streetName.long_name}`;
+    // There are a few instances where the street number isn't present.
+    // This handles that (somewhat inelegantly).
+    const tryStreetNum = streetNumber ? streetNumber.long_name : '';
+
+    const lineOne = `${tryStreetNum} ${streetName.long_name}`;
     const lineTwo = `${city.long_name}, ${state.short_name} ${postal.long_name}`;
 
     return (

@@ -6,9 +6,13 @@ type ClarifaiApp = {
   predict: Function,
 };
 
+type Props = {
+  url: string,
+};
+
 export default class Clarifai extends Component {
-  app: { model: ClarifaiApp };
-  props: { url: string };
+  app: { models: ClarifaiApp };
+  props: Props;
   state: { summary: string } = { summary: '' };
 
   componentDidMount() {
@@ -17,10 +21,22 @@ export default class Clarifai extends Component {
       'c2vHENnTnNj6XdFkXCEWbG1g1oSdBmTqOTO44eP9',
     );
 
-    this.app.models.predict(clarifai.GENERAL_MODEL, this.props.url).then(
+    this.fetch(this.props.url);
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (this.props.url !== nextProps.url) {
+      this.fetch(nextProps.url);
+    }
+  }
+
+  fetch(url: string) {
+    const action = () => this.app.models.predict(clarifai.GENERAL_MODEL, url).then(
       res => this.handleResults(res),
       err => console.err(err),
     );
+
+    this.setState({ summary: '' }, action);
   }
 
   handleResults(res: ClarifaiResult) {

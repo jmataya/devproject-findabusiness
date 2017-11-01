@@ -39,3 +39,9 @@
 .details .info {
   display: flex;
 }
+
+.placeholder {
+  background: #D6D6D6;
+  height: 65px;
+  width: 65px;
+}

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Grid from '../components/presentation/layout/Grid';
-import SearchBox from '../components/presentation/SearchBox';
 import Header from '../components/presentation/Header';
 import SearchResults from '../components/presentation/SearchResults';
+import SmallHeader from '../components/presentation/typography/SmallHeader';
 
 import GooglePlaces from '../components/container/GooglePlaces';
 
@@ -28,9 +28,7 @@ class Results extends Component {
       <div>
         <Header>
           <div className="results-header">
-            <SearchBox defaultValue={searchTerm}
-                       onCancel={() => this.props.history.push('/')}
-            />
+            <SmallHeader>Search Results</SmallHeader>
           </div>
         </Header>
         <Grid>

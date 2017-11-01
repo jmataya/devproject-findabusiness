@@ -8,6 +8,7 @@
 [libs]
 ./src/interfaces/global.js
 ./src/interfaces/google.js
+./src/interfaces/clarifai.js
 
 [options]
 esproposal.class_static_fields=enable

@@ -3,62 +3,92 @@ import React, { Component } from 'react';
 import './SearchBox.css';
 
 type Props = {
-  defaultValue: string,
-  onCancel?: Function,
+  defaultKeyword: string,
+  defaultZipcode: string,
   onSubmit: Function,
 };
 
 type State = {
-  value: string,
+  keyword: string,
+  zipcode: string,
+  error: string,
 };
 
 export default class SearchBox extends Component {
   props: Props;
-  state: State = { value: this.props.defaultValue };
-
-  static defaultProps = {
-    defaultValue: "",
-    onSubmit: (s: string) => {},
+  state: State = {
+    keyword: this.props.defaultKeyword,
+    zipcode: this.props.defaultZipcode,
+    error: '',
   };
 
-  handleCancel() {
-    const cancelFn = this.props.onCancel
-      ? this.props.onCancel
-      : () => {};
-    this.setState({ value: '' }, cancelFn);
-  }
+  static defaultProps = {
+    defaultKeyword: '',
+    defaultZipcode: '',
+    onSubmit: (k: string, z: string) => {},
+  };
 
-  handleChange(e: Event) {
+  handleKeywordChange(e: Event) {
     if (e.target instanceof HTMLInputElement) {
-      this.setState({ value: e.target.value });
+      this.setState({
+        keyword: e.target.value,
+        error: '',
+      });
     }
   }
 
-  handleKeyPress(e: KeyboardEvent) {
-    if (e.key === 'Enter') {
-      this.props.onSubmit(this.state.value);
+  handleZipChange(e: Event) {
+    if (e.target instanceof HTMLInputElement) {
+      this.setState({
+        zipcode: e.target.value,
+        error: '',
+      });
+    }
+  }
+
+  handleSubmit(e: Event) {
+    e.preventDefault();
+
+    const { keyword, zipcode } = this.state;
+    if (keyword === '' && zipcode === '') {
+      this.setState({ error: 'Please provide a keyword and zip code.' });
+    } else if (keyword === '') {
+      this.setState({ error: 'Please provide a keyword.' });
+    } else if (zipcode === '') {
+      this.setState({ error: 'Please provide a zipcode.' });
+    } else {
+      this.props.onSubmit(keyword, zipcode);
     }
   }
 
   render() {
+    const { error, keyword, zipcode } = this.state;
+
     return (
-      <div className="search-box">
-        <div className="search-icon">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-        <input className="input-field"
-               type="text"
-               placeholder="Search for a place or address"
-               onChange={this.handleChange.bind(this)}
-               onKeyPress={this.handleKeyPress.bind(this)}
-               value={this.state.value}
-        />
-        {this.state.value !== '' && (
-          <div className="cancel-icon" onClick={this.handleCancel.bind(this)}>
-            <i class="fa fa-times" aria-hidden="true"></i>
-          </div>
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        {error !== '' && (
+          <div className="error-message">{error}</div>
         )}
-      </div>
+        <div className="search-box">
+          <input className="input-field"
+                 type="text"
+                 placeholder="Business name or keyword"
+                 onChange={this.handleKeywordChange.bind(this)}
+                 value={keyword}
+          />
+        </div>
+        <div className="search-box">
+          <input className="input-field"
+                 type="text"
+                 placeholder="Zipcode"
+                 onChange={this.handleZipChange.bind(this)}
+                 value={zipcode}
+          />
+        </div>
+        <button type="submit" className="search">
+          Search
+        </button>
+      </form>
     );
   }
 }

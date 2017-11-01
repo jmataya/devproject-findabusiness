@@ -22,10 +22,20 @@
   padding-right: 35px;
 }
 
+.thumbnail {
+  cursor: pointer;
+}
+
 .thumbnail img {
   height: 50px;
   width: 50px;
   object-fit: cover;
+  padding: 2px;
+}
+
+.thumbnail.selected img {
+  border: 2px solid #FF9500;
+  padding: 0;
 }
 
 .caption {

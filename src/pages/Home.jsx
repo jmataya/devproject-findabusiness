@@ -18,7 +18,8 @@ type Props = {
 class Home extends Component {
   props: Props;
 
-  onSearch = (searchTerm: string) => {
+  onSearch = (keyword: string, zipcode: string) => {
+    const searchTerm = `${keyword} ${zipcode}`;
     this.props.history.push(`/results/${searchTerm}`);
   };
 

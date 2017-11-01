@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import Caption from './typography/Caption';
+import Clarifai from '../container/Clarifai';
 import './Gallery.css';
 
 type ImageDetails = {
@@ -24,19 +25,13 @@ export default class Gallery extends Component {
 
   renderImage(imageDetails: ImageDetails) {
     const { alt, url, caption } = imageDetails;
-    const captionString = caption.reduce((str, caption) => {
-      if (str === '') {
-        return caption;
-      } else {
-        return `${str}, ${caption}`;
-      }
-    }, '');
-
     return (
       <div className="image-container">
         <div className="image"><img key={url} src={url} alt={alt} /></div>
         <div className="caption">
-          <Caption>{captionString}</Caption>
+          <Caption>
+            <Clarifai url={url} />
+          </Caption>
         </div>
       </div>
     );

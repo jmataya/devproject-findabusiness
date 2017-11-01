@@ -1,4 +1,13 @@
 .header {
   border-bottom: 0.5px solid #D6D6D6;
   width: 100vw;
+  padding: 0 35px;
+  text-align: center;
+  height: 75px;
+}
+
+.back-button {
+  color: #FF2D55;
+  text-align: left;
+  padding-top: 25px;
 }

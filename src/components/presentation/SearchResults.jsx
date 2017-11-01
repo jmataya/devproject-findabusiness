@@ -49,7 +49,7 @@ export default class SearchResults extends Component {
 
   resultsMessage() {
     const { results, searchTerm } = this.props
-    return `${results.length} results found for search "${searchTerm}:"`;
+    return `${results.length} results found for search "${searchTerm}":`;
   }
 
   getImage(result: PlaceResult) {
@@ -61,14 +61,17 @@ export default class SearchResults extends Component {
   }
 
   render() {
-    const { results } = this.props;
+    const { results, searchTerm } = this.props;
     const resultList = results.map(res => {
       return (
         <Column width={6}>
           <Link className="entry"
                 to={{
                   pathname: `/details/${res.id}`,
-                  params: { place: res },
+                  params: {
+                    place: res,
+                    from: `/results/${searchTerm}`,
+                  },
                 }}
           >
             <div className="image">{this.getImage(res)}</div>

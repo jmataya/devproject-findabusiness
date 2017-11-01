@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Address from '../components/presentation/Address';
 import BusinessDetails  from '../components/presentation/BusinessDetails';
@@ -7,16 +8,22 @@ import Column from '../components/presentation/layout/Column';
 import Gallery from '../components/presentation/Gallery';
 import Header from '../components/presentation/Header';
 import Row from '../components/presentation/layout/Row';
-import Title from '../components/presentation/typography/Title';
+import SmallHeader from '../components/presentation/typography/SmallHeader';
 
 import './Details.css';
 
 type Props = {
+  history: {
+    push: Function,
+  },
   location: {
-    params?: { place?: PlaceResult },
+    params?: {
+      from?: string,
+      place?: PlaceResult,
+    },
   },
   match: {
-    params: { id: string, }
+    params: { id: string }
   },
 };
 
@@ -24,7 +31,7 @@ type State = {
   place: ?FullPlaceResult,
 };
 
-export default class Details extends Component {
+class Details extends Component {
   props: Props;
   state: State = { place: null };
 
@@ -78,6 +85,15 @@ export default class Details extends Component {
     }
   }
 
+  goBack() {
+    const { params } = this.props.location;
+    const backTo = params && params.from
+      ? params.from
+      : '/';
+
+    this.props.history.push(backTo);
+  }
+
   render() {
     const { place } = this.state;
     if (!place) {
@@ -94,8 +110,10 @@ export default class Details extends Component {
 
     return (
       <div>
-        <Header>
-          <Title>{place.name}</Title>
+        <Header onBack={this.goBack.bind(this)}>
+          <div className="details-header">
+            <SmallHeader>Business Details</SmallHeader>
+          </div>
         </Header>
         <div className="detail-body">
           <Row>
@@ -111,3 +129,5 @@ export default class Details extends Component {
     );
   }
 }
+
+export default withRouter(Details);

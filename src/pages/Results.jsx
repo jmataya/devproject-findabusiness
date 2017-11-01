@@ -7,6 +7,8 @@ import SearchResults from '../components/presentation/SearchResults';
 
 import GooglePlaces from '../components/container/GooglePlaces';
 
+import './Results.css';
+
 type Props = {
   match: {
     params: {
@@ -24,7 +26,9 @@ export default class Results extends Component {
     return (
       <div>
         <Header>
-          <SearchBox defaultValue={searchTerm} />
+          <div className="results-header">
+            <SearchBox defaultValue={searchTerm} />
+          </div>
         </Header>
         <Grid>
           <GooglePlaces searchTerm={searchTerm}>

@@ -1,29 +1,38 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Column from './layout/Column';
-import Grid from './layout/Grid';
 import Row from './layout/Row';
 
 import './Header.css';
 
 type Props = {
   children?: string | Element<*> | Array<Element<*>>,
+  history: { push: Function },
+  onBack: Function,
 };
 
-export default class Header extends Component {
+class Header extends Component {
   props: Props;
 
   render() {
+    const { children, onBack = () => this.props.history.push('/') } = this.props;
+
     return (
       <div className="header">
-        <Grid>
-          <Row>
-            <Column offset={4} width={4}>
-              {this.props.children}
-            </Column>
-          </Row>
-        </Grid>
+        <Row>
+          <Column width={4}>
+            <div className="back-button" onClick={onBack}>
+              {"< Back"}
+            </div>
+          </Column>
+          <Column width={4}>
+            {this.props.children}
+          </Column>
+        </Row>
       </div>
     );
   }
 }
+
+export default withRouter(Header);

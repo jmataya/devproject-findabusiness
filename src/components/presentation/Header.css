@@ -8,6 +8,7 @@
 
 .back-button {
   color: #FF2D55;
+  cursor: pointer;
   text-align: left;
   padding-top: 25px;
 }

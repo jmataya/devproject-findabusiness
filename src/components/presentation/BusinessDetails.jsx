@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, Element } from 'react';
+import React, { Component } from 'react';
 import Address from './Address';
 import Detail from './Detail';
 

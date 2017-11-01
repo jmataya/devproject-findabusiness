@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Address from '../components/presentation/Address';
 import BusinessDetails  from '../components/presentation/BusinessDetails';
 import Column from '../components/presentation/layout/Column';
 import Gallery from '../components/presentation/Gallery';

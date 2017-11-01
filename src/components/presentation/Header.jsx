@@ -27,7 +27,7 @@ class Header extends Component {
             </div>
           </Column>
           <Column width={4}>
-            {this.props.children}
+            {children}
           </Column>
         </Row>
       </div>

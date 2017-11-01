@@ -3,6 +3,18 @@
   border-radius: 10px;
   margin-top: 7px;
   padding: 0 7px;
+
+  display: flex;
+}
+
+.search-icon, .cancel-icon {
+  color: #8E8E93;
+  font-size: 12px;
+  padding: 8px 4px;
+}
+
+.cancel-icon {
+  cursor: pointer;
 }
 
 .search-box .input-field {
@@ -13,4 +25,8 @@
   font-size: 17px;
   padding: 7px 0;
   width: 100%;
+}
+
+.search-box input:focus {
+  outline: none;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Grid from '../components/presentation/layout/Grid';
 import SearchBox from '../components/presentation/SearchBox';
@@ -17,7 +18,7 @@ type Props = {
   }
 }
 
-export default class Results extends Component {
+class Results extends Component {
   props: Props;
 
   render() {
@@ -27,7 +28,9 @@ export default class Results extends Component {
       <div>
         <Header>
           <div className="results-header">
-            <SearchBox defaultValue={searchTerm} />
+            <SearchBox defaultValue={searchTerm}
+                       onCancel={() => this.props.history.push('/')}
+            />
           </div>
         </Header>
         <Grid>
@@ -39,3 +42,5 @@ export default class Results extends Component {
     );
   }
 }
+
+export default withRouter(Results);

@@ -4,6 +4,7 @@ import './SearchBox.css';
 
 type Props = {
   defaultValue: string,
+  onCancel?: Function,
   onSubmit: Function,
 };
 
@@ -20,6 +21,13 @@ export default class SearchBox extends Component {
     onSubmit: (s: string) => {},
   };
 
+  handleCancel() {
+    const cancelFn = this.props.onCancel
+      ? this.props.onCancel
+      : () => {};
+    this.setState({ value: '' }, cancelFn);
+  }
+
   handleChange(e: Event) {
     if (e.target instanceof HTMLInputElement) {
       this.setState({ value: e.target.value });
@@ -35,6 +43,9 @@ export default class SearchBox extends Component {
   render() {
     return (
       <div className="search-box">
+        <div className="search-icon">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
         <input className="input-field"
                type="text"
                placeholder="Search for a place or address"
@@ -42,6 +53,11 @@ export default class SearchBox extends Component {
                onKeyPress={this.handleKeyPress.bind(this)}
                value={this.state.value}
         />
+        {this.state.value !== '' && (
+          <div className="cancel-icon" onClick={this.handleCancel.bind(this)}>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </div>
+        )}
       </div>
     );
   }

@@ -1,10 +1,13 @@
 // @flow
 import React, { Component } from 'react';
 import Address from './Address';
+import Column from './layout/Column';
 import Detail from './Detail';
+import Gallery from './Gallery';
+import Row from './layout/Row';
 
 type Props = {
-  result: FullPlaceResult,
+  place?: FullPlaceResult,
 };
 
 const formatCategories = (categories: Array<string>): string => {
@@ -19,27 +22,44 @@ export default class BusinessDetails extends Component {
   props: Props;
 
   render() {
-    const { result } = this.props;
+    const { place } = this.props;
+    if (!place) {
+      return <div></div>;
+    }
+
+    const imageDetails = (place.photos || []).map(photo => {
+      return {
+        url: photo.getUrl({ maxWidth: 800, maxHeight: 1000 }),
+        alt: place.name,
+        caption: ['one', 'two', 'dog'],
+      };
+    });
 
     return (
-      <div className="details">
-        <Detail title="Business">
-          {result.name}
-        </Detail>
-        <Detail title="Phone Number">
-          {result.international_phone_number}
-        </Detail>
-        <Detail title="Email">
-          {result.email}
-        </Detail>
-        <Detail title="Address">
-          <Address components={result.address_components} />
-        </Detail>
-        <Detail title="Categories">
-          {formatCategories(result.types)}
-        </Detail>
-      </div>
-
-    )
+      <Row>
+        <Column width={6}>
+          <Gallery images={imageDetails} />
+        </Column>
+        <Column width={6}>
+          <div className="details">
+            <Detail title="Business">
+              {place.name}
+            </Detail>
+            <Detail title="Phone Number">
+              {place.international_phone_number}
+            </Detail>
+            {place.email && (
+              <Detail title="Email">{place.email}</Detail>
+            )}
+            <Detail title="Address">
+              <Address components={place.address_components} />
+            </Detail>
+            <Detail title="Categories">
+              {formatCategories(place.types)}
+            </Detail>
+          </div>
+        </Column>
+      </Row>
+    );
   }
 }

@@ -7,6 +7,7 @@ type PhotoResult = {
 
 type PlaceResult = {
   id: string,
+  place_id: string,
   name: string,
   formatted_address: string,
   photos: Array<PhotoResult>,

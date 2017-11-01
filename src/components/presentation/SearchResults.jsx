@@ -67,7 +67,7 @@ export default class SearchResults extends Component {
         <Column width={6}>
           <Link className="entry"
                 to={{
-                  pathname: `/details/${res.id}`,
+                  pathname: `/details/${res.place_id}`,
                   params: {
                     place: res,
                     from: `/results/${searchTerm}`,

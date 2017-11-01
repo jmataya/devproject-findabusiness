@@ -1,7 +1,7 @@
 .search-box {
   background: #f3f3f4;
   border-radius: 10px;
-  margin-top: 7px;
+  margin-top: 10px;
   padding: 0 7px;
 
   display: flex;
@@ -29,4 +29,19 @@
 
 .search-box input:focus {
   outline: none;
+}
+
+.search {
+  -webkit-appearance: none;
+  background: #007AFF;
+  border: none;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 17px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.error-message {
+  color: #FF3B30;
 }

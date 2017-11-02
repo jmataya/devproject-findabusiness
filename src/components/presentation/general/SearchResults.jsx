@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './SearchResults.css';
 
-import Column from './layout/Column';
-import Row from './layout/Row';
-import SectionTitle from './typography/SectionTitle';
-import SmallHeader from './typography/SmallHeader';
+import Column from '../layout/Column';
+import Row from '../layout/Row';
+import SectionTitle from '../typography/SectionTitle';
+import SmallHeader from '../typography/SmallHeader';
 
 type Props = {
   results: Array<PlaceResult>,
